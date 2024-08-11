@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; max-width: 800px; margin: auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skill Calculator</h1>
+        <div class="form-group">
+            <label for="str">Strength (Str)</label>
+            <input type="number" id="str" placeholder="Enter Strength" />
+        </div>
+        <div class="form-group">
+            <label for="per">Perception (Per)</label>
+            <input type="number" id="per" placeholder="Enter Perception" />
+        </div>
+        <div class="form-group">
+            <label for="end">Endurance (End)</label>
+            <input type="number" id="end" placeholder="Enter Endurance" />
+        </div>
+        <div class="form-group">
+            <label for="cha">Charisma (Cha)</label>
+            <input type="number" id="cha" placeholder="Enter Charisma" />
+        </div>
+        <div class="form-group">
+            <label for="int">Intelligence (Int)</label>
+            <input type="number" id="int" placeholder="Enter Intelligence" />
+        </div>
+        <div class="form-group">
+            <label for="agi">Agility (Agi)</label>
+            <input type="number" id="agi" placeholder="Enter Agility" />
+        </div>
+        <div class="form-group">
+            <label for="luck">Luck (Luck)</label>
+            <input type="number" id="luck" placeholder="Enter Luck" />
+        </div>
+        
+        <h2>Extra Points</h2>
+        <div class="form-group">
+            <label for="smallGunsPoints">Extra Points for Small Guns</label>
+            <input type="number" id="smallGunsPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="bigGunsPoints">Extra Points for Big Guns</label>
+            <input type="number" id="bigGunsPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="energyWeaponsPoints">Extra Points for Energy Weapons</label>
+            <input type="number" id="energyWeaponsPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="unarmedPoints">Extra Points for Unarmed</label>
+            <input type="number" id="unarmedPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="meleeWeaponsPoints">Extra Points for Melee Weapons</label>
+            <input type="number" id="meleeWeaponsPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="throwingPoints">Extra Points for Throwing</label>
+            <input type="number" id="throwingPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="firstAidPoints">Extra Points for First Aid</label>
+            <input type="number" id="firstAidPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="doctorPoints">Extra Points for Doctor</label>
+            <input type="number" id="doctorPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="sneakPoints">Extra Points for Sneak</label>
+            <input type="number" id="sneakPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="lockpickPoints">Extra Points for Lockpick</label>
+            <input type="number" id="lockpickPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="stealPoints">Extra Points for Steal</label>
+            <input type="number" id="stealPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="trapsPoints">Extra Points for Traps</label>
+            <input type="number" id="trapsPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="sciencePoints">Extra Points for Science</label>
+            <input type="number" id="sciencePoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="repairPoints">Extra Points for Repair</label>
+            <input type="number" id="repairPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="pilotPoints">Extra Points for Pilot</label>
+            <input type="number" id="pilotPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="speechPoints">Extra Points for Speech</label>
+            <input type="number" id="speechPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="barterPoints">Extra Points for Barter</label>
+            <input type="number" id="barterPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="gamblingPoints">Extra Points for Gambling</label>
+            <input type="number" id="gamblingPoints" placeholder="Enter Extra Points" />
+        </div>
+        <div class="form-group">
+            <label for="outdoorsmanPoints">Extra Points for Outdoorsman</label>
+            <input type="number" id="outdoorsmanPoints" placeholder="Enter Extra Points" />
+        </div>
+        
+        <button onclick="calculate()">Calculate</button>
+        
+        <div class="result">
+            <h2>Results</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Get values from inputs
+            const str = parseFloat(document.getElementById('str').value) || 0;
+            const per = parseFloat(document.getElementById('per').value) || 0;
+            const end = parseFloat(document.getElementById('end').value) || 0;
+            const cha = parseFloat(document.getElementById('cha').value) || 0;
+            const int = parseFloat(document.getElementById('int').value) || 0;
+            const agi = parseFloat(document.getElementById('agi').value) || 0;
+            const luck = parseFloat(document.getElementById('luck').value) || 0;
+
+            // Get extra points
+            const smallGunsPoints = parseFloat(document.getElementById('smallGunsPoints').value) || 0;
+            const bigGunsPoints = parseFloat(document.getElementById('bigGunsPoints').value) || 0;
+            const energyWeaponsPoints = parseFloat(document.getElementById('energyWeaponsPoints').value) || 0;
+            const unarmedPoints = parseFloat(document.getElementById('unarmedPoints').value) || 0;
+            const meleeWeaponsPoints = parseFloat(document.getElementById('meleeWeaponsPoints').value) || 0;
+            const throwingPoints = parseFloat(document.getElementById('throwingPoints').value) || 0;
+            const firstAidPoints = parseFloat(document.getElementById('firstAidPoints').value) || 0;
+            const doctorPoints = parseFloat(document.getElementById('doctorPoints').value) || 0;
+            const sneakPoints = parseFloat(document.getElementById('sneakPoints').value) || 0;
+            const lockpickPoints = parseFloat(document.getElementById('lockpickPoints').value) || 0;
+            const stealPoints = parseFloat(document.getElementById('stealPoints').value) || 0;
+            const trapsPoints = parseFloat(document.getElementById('trapsPoints').value) || 0;
+            const sciencePoints = parseFloat(document.getElementById('sciencePoints').value) || 0;
+            const repairPoints = parseFloat(document.getElementById('repairPoints').value) || 0;
+            const pilotPoints = parseFloat(document.getElementById('pilotPoints').value) || 0;
+            const speechPoints = parseFloat(document.getElementById('speechPoints').value) || 0;
+            const barterPoints = parseFloat(document.getElementById('barterPoints').value) || 0;
+            const gamblingPoints = parseFloat(document.getElementById('gamblingPoints').value) || 0;
+            const outdoorsmanPoints = parseFloat(document.getElementById('outdoorsmanPoints').value) || 0;
+
+            // Perform calculations
+            const results = `
+                <strong>Small Guns</strong>: ${Math.round(5 + 4 * agi + smallGunsPoints)}
+                <br><strong>Big Guns</strong>: ${Math.round(2 * agi + bigGunsPoints)}
+                <br><strong>Energy Weapons</strong>: ${Math.round(2 * agi + energyWeaponsPoints)}
+                <br><strong>Unarmed</strong>: ${Math.round(30 + 2 * (agi + str) + unarmedPoints)}
+                <br><strong>Melee Weapons</strong>: ${Math.round(20 + 2 * (agi + str) + meleeWeaponsPoints)}
+                <br><strong>Throwing</strong>: ${Math.round(4 * agi + throwingPoints)}
+                <br><strong>First Aid</strong>: ${Math.round(2 * (per + agi) + firstAidPoints)}
+                <br><strong>Doctor</strong>: ${Math.round(5 + per + end + doctorPoints)}
+                <br><strong>Sneak</strong>: ${Math.round(5 + 3 * agi + sneakPoints)}
+                <br><strong>Lockpick</strong>: ${Math.round(10 + per + agi + lockpickPoints)}
+                <br><strong>Steal</strong>: ${Math.round(3 * agi + stealPoints)}
+                <br><strong>Traps</strong>: ${Math.round(10 + per + agi + trapsPoints)}
+                <br><strong>Science</strong>: ${Math.round(4 * int + sciencePoints)}
+                <br><strong>Repair</strong>: ${Math.round(3 * int + repairPoints)}
+                <br><strong>Pilot</strong>: ${Math.round(2 * (agi + per) + pilotPoints)}
+                <br><strong>Speech</strong>: ${Math.round(5 * cha + speechPoints)}
+                <br><strong>Barter</strong>: ${Math.round(4 * cha + barterPoints)}
+                <br><strong>Gambling</strong>: ${Math.round(4 * luck + gamblingPoints)}
+                <br><strong>Outdoorsman</strong>: ${Math.round(2 * (end + int) + outdoorsmanPoints)}
+            `;
+            
+            // Display results
+            document.getElementById('results').innerHTML = results;
+        }
+    </script>
+</body>
+</html>
